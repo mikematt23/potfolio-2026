@@ -503,7 +503,7 @@ a {
   padding: 8px;
   height: 100%;
   min-height: 0;
-  overflow: hidden;
+  overflow: auto;
   font-family: var(--readout);
   font-synthesis: none;
 }
@@ -675,15 +675,16 @@ a {
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto;
   grid-template-areas:
     'lang front back'
     'ai db cloud'
     'atl test tools';
   gap: 10px;
   width: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
+  flex: 0 0 auto;
+  height: auto;
+  min-height: min-content;
 }
 
 .skill-panel {
@@ -691,12 +692,11 @@ a {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  min-height: 0;
-  height: 100%;
+  height: auto;
   background: var(--black);
   border-left: 5px solid var(--panel);
   border-radius: 0 16px 16px 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .skill-panel.is-languages {
@@ -798,7 +798,6 @@ a {
   opacity: 0.72;
 }
 
-.skill-panel ul,
 .project-body {
   flex: 1 1 auto;
   min-height: 0;
@@ -823,9 +822,13 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  flex: 0 0 auto;
   gap: 8px;
   width: 100%;
+  min-height: auto;
+  margin: 0;
   padding: 14px 16px;
+  overflow: visible;
   list-style: none;
 }
 
@@ -1204,7 +1207,7 @@ a {
 
   .skill-grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(5, minmax(0, 1fr));
+    grid-template-rows: auto;
     grid-template-areas:
       'lang front'
       'back ai'
@@ -1212,6 +1215,7 @@ a {
       'atl test'
       'tools tools';
     gap: 10px;
+    height: auto;
   }
 
   .projects-page,
@@ -1380,7 +1384,11 @@ a {
     overflow: visible;
   }
 
-  .skill-panel ul,
+  .skill-panel ul {
+    overflow: visible;
+    flex: none;
+  }
+
   .project-body {
     overflow: visible;
     flex: none;
